@@ -664,26 +664,36 @@
 #pragma region
 int main()
 {
-    long long*** m = malloc(sizeof(long long**) * 2); // 높이 메모리공간 할당
+    long long*** m = malloc(sizeof(long long**) * 2); // 삼중 포인터 선언한디 면의 포인터가 들어갈 공간 할당(면*높이)
     
-    for (int row = 0; row < 2; row++) // 세로 메모리 공간 할당
+    for (int row = 0; row < 2; row++) // 면의 개수만큼 반복하면서
     {
-        m[row] = malloc(sizeof(long long*) * 3);
+        m[row] = malloc(sizeof(long long*) * 3); // 세로공간에 해당하는 메모리 할당(요소 * 3)
 
-        for (int col = 0; col < 3; col++)
+        for (int col = 0; col < 3; col++) // 면 반복문 안에서 세로크기만큼 반복하면서 가로 공간에 해당하는 메모리 할당
         {
-            m[row][col] = malloc(sizeof(long long) * 5);
+            m[row][col] = malloc(sizeof(long long) * 5); // 가로 공간에 해당하는 메모리 할당
         }
     }
-
-        m[1][2][4] = 100;
+    m[1][2][4] = 100;
 
     printf("%lld\n", m[1][2][4]);
 
-    for (int col = 0; col < 3; )
+    // 면->세로->가로 순으로 메모리를 할당했으니
+    // 가로->세로->면 순으로 해제
+    for (int row = 0; row < 2; row++)
+    {
+        for (int col = 0; col < 3; col++)
+        {
+            free(m[row][col]); // 가로
+        }
 
-        free(m);
+        free(m[row]); //세로
+    }
+    free(m); //면
 
     return 0;
+    //ㅁㄴㅇㄹ
+    //ㅁㄴㅇㄹ
 }
 #pragma endregion 38.6 연습문제 : 포인터에 할당된 메모리를 삼차원 배열처럼 사용하기
