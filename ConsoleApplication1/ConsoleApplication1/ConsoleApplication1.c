@@ -662,38 +662,82 @@
 #pragma endregion 38.2 포인터에 할당된 메모리를 이차원 배열처럼 사용하기
 
 #pragma region
+//int main()
+//{
+//    long long*** m = malloc(sizeof(long long**) * 2); // 삼중 포인터 선언한디 면의 포인터가 들어갈 공간 할당(면*높이)
+//    
+//    for (int row = 0; row < 2; row++) // 면의 개수만큼 반복하면서
+//    {
+//        m[row] = malloc(sizeof(long long*) * 3); // 세로공간에 해당하는 메모리 할당(요소 * 3)
+//
+//        for (int col = 0; col < 3; col++) // 면 반복문 안에서 세로크기만큼 반복하면서 가로 공간에 해당하는 메모리 할당
+//        {
+//            m[row][col] = malloc(sizeof(long long) * 5); // 가로 공간에 해당하는 메모리 할당
+//        }
+//    }
+//    m[1][2][4] = 100;
+//
+//    printf("%lld\n", m[1][2][4]);
+//
+//    // 면->세로->가로 순으로 메모리를 할당했으니
+//    // 가로->세로->면 순으로 해제
+//    for (int row = 0; row < 2; row++)
+//    {
+//        for (int col = 0; col < 3; col++)
+//        {
+//            free(m[row][col]); // 가로
+//        }
+//
+//        free(m[row]); //세로
+//    }
+//    free(m); //면
+//
+//    return 0;
+//}
+#pragma endregion 38.6 연습문제 : 포인터에 할당된 메모리를 삼차원 배열처럼 사용하기
+
+#pragma region
+//int main()
+//{
+//
+//   /* char s1[128] = "Beethoven 9th Symphony";
+//
+//    printf("%s\n", s1);*/
+//
+//    char s1[30] = "Beethoven 9th Symphony";
+//
+//    printf("%c\n", s1[10]);
+//
+//    return 0;
+//}
+#pragma endregion 39.6 연습문제 : 문자열 만들기
+
+#pragma region
+//int main()
+//{
+//
+//   /* char s1[128] = "Beethoven 9th Symphony";
+//
+//    printf("%s\n", s1);*/
+//
+//    char s1[30] = "Beethoven 9th Symphony";
+//
+//    printf("%c\n", s1[10]);
+//
+//    return 0;
+//}
+#pragma endregion 40.2 입력값을 문자열 포인터에 저장하기
+
+#pragma region
 int main()
 {
-    long long*** m = malloc(sizeof(long long**) * 2); // 삼중 포인터 선언한디 면의 포인터가 들어갈 공간 할당(면*높이)
+    char s1[10];
+
+    printf("문자열을 입력하세요: ");
+    scanf("%s", s1);
     
-    for (int row = 0; row < 2; row++) // 면의 개수만큼 반복하면서
-    {
-        m[row] = malloc(sizeof(long long*) * 3); // 세로공간에 해당하는 메모리 할당(요소 * 3)
-
-        for (int col = 0; col < 3; col++) // 면 반복문 안에서 세로크기만큼 반복하면서 가로 공간에 해당하는 메모리 할당
-        {
-            m[row][col] = malloc(sizeof(long long) * 5); // 가로 공간에 해당하는 메모리 할당
-        }
-    }
-    m[1][2][4] = 100;
-
-    printf("%lld\n", m[1][2][4]);
-
-    // 면->세로->가로 순으로 메모리를 할당했으니
-    // 가로->세로->면 순으로 해제
-    for (int row = 0; row < 2; row++)
-    {
-        for (int col = 0; col < 3; col++)
-        {
-            free(m[row][col]); // 가로
-        }
-
-        free(m[row]); //세로
-    }
-    free(m); //면
+    printf("%s\n", s1);
 
     return 0;
-    //ㅁㄴㅇㄹ
-    //ㅁㄴㅇㄹ
 }
-#pragma endregion 38.6 연습문제 : 포인터에 할당된 메모리를 삼차원 배열처럼 사용하기
+#pragma endregion 40.2 입력값을 문자열 포인터에 저장하기
